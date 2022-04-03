@@ -2,6 +2,7 @@ from datetime import datetime
 import os
 import telebot
 import pandas
+import config
 
 bot = telebot.TeleBot(config.token)
 group_id = os.environ.get('GROUP_ID')
