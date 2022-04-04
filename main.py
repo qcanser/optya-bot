@@ -1,4 +1,3 @@
-from datetime import datetime
 import time
 import os
 import telebot
@@ -9,10 +8,15 @@ import feedparser
 
 from multiprocessing import *
 from telebot import types
+from fuzzywuzzy import fuzz
+from datetime import datetime
+from time import mktime
+
 
 
 bot = telebot.TeleBot(config.token)
-group_id = os.environ.get('GROUP_ID')
+# group_id = os.environ.get('GROUP_ID')
+group_id = '-770664035'
 
 today = datetime.now()
 today_tuple = (today.month, today.day)
@@ -24,8 +28,8 @@ def start_process():
 
 class TimeSchedule():
     def start_schedule():
-        schedule.every().day.at("04:00").do(TimeSchedule.send_congratulations)
-        schedule.every().day.at("04:01").do(TimeSchedule.send_new_podcast)
+        schedule.every().day.at("13:51").do(TimeSchedule.send_congratulations)
+        schedule.every().day.at("15:29").do(TimeSchedule.send_new_podcast)
 
         while True:
             schedule.run_pending()
@@ -42,9 +46,14 @@ class TimeSchedule():
 
 
     def send_new_podcast():
-        d = feedparser.parse("https://promodj.com/strogonov-radioshow-technopolis/podcast.xml")
-        podcast_link = d.entries[0]['link']
-        bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n {podcast_link}')
+        podcast_url = feedparser.parse("https://promodj.com/strogonov-radioshow-technopolis/podcast.xml")
+        podcast_link = podcast_url.entries[0]['link']
+
+        for post in podcast_url.entries:
+            pub_date = datetime.fromtimestamp(mktime(post.published_parsed)).strftime("%Y-%m-%d")
+            today_date = ('2022-03-31')
+            if today_date in pub_date:
+                bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n {podcast_link}')
 
 
 if __name__ == '__main__':
