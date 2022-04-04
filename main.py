@@ -26,7 +26,7 @@ def start_process():
 class TimeSchedule():
     def start_schedule():
         schedule.every().day.at("04:00").do(TimeSchedule.send_congratulations)
-        schedule.every().day.at("17:08").do(TimeSchedule.send_new_podcast)
+        schedule.every().day.at("04:01").do(TimeSchedule.send_new_podcast)
 
         while True:
             schedule.run_pending()
@@ -48,20 +48,20 @@ class TimeSchedule():
 
         for post in podcast_url.entries:
             pub_date = datetime.fromtimestamp(mktime(post.published_parsed)).strftime("%Y-%m-%d")
-            today_date = ('2022-03-31')
+            today_date = today
             if today_date in pub_date:
-                bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n {podcast_link}')
+                bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n \n {podcast_link}')
 
 
-# @bot.message_handler(content_types=['image'])
-# def reply_genius(message):
-#     bot.send_message(message.chat.id, "Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃")
+@bot.message_handler(content_types=["sticker", "pinned_message", "photo", "audio", "voice", "video"])
+def reply_genius(message):
+    bot.send_message(message.chat.id, "Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃")
 
 
-# @bot.message_handler(regexp='Спасибо')
-# def reply_thanks(message):
-#     url = 'https://cs5.pikabu.ru/images/big_size_comm/2015-10_2/1444219702158350197.jpg'
-#     bot.send_message(message.chat.id, url)
+@bot.message_handler(regexp='Спасибо')
+def reply_thanks(message):
+    url = 'https://cs5.pikabu.ru/images/big_size_comm/2015-10_2/1444219702158350197.jpg'
+    bot.send_message(message.chat.id, f'Спасибо судья 👍🔥😊😊😊 \n {url}')
 
 
 if __name__ == '__main__':
