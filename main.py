@@ -3,7 +3,6 @@ import os
 import telebot
 import pandas
 import schedule
-import config
 import feedparser
 
 from multiprocessing import *
@@ -11,8 +10,8 @@ from telebot import types
 from datetime import datetime
 from time import mktime
 
-
-bot = telebot.TeleBot(config.token)
+token = os.environ['BOT_API_TOKEN']
+bot = telebot.TeleBot(token)
 group_id = os.environ.get('GROUP_ID')
 
 today = datetime.now()
@@ -66,7 +65,4 @@ def reply_thanks(message):
 
 if __name__ == '__main__':
     start_process()
-    try:
-        bot.polling(none_stop=True)
-    except:
-        pass
+    bot.polling(none_stop=True)
