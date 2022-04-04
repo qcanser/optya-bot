@@ -25,7 +25,7 @@ def start_process():
 class TimeSchedule():
     def start_schedule():
         schedule.every().day.at("04:00").do(TimeSchedule.send_congratulations)
-        schedule.every().day.at("18:38").do(TimeSchedule.send_new_podcast)
+        schedule.every().day.at("16:30").do(TimeSchedule.send_new_podcast)
 
         while True:
             schedule.run_pending()
@@ -47,7 +47,8 @@ class TimeSchedule():
 
         for post in podcast_url.entries:
             post_date = datetime.fromtimestamp(mktime(post.published_parsed)).date()
-            today = datetime.now().date()
+            # today = datetime.now().date()
+            today = ('2022-03-31')
             if post_date == today:
                 bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n \n {podcast_link}')
 
