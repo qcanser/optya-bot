@@ -12,7 +12,7 @@ from time import mktime
 
 token = os.environ['BOT_API_TOKEN']
 bot = telebot.TeleBot(token)
-group_id = os.environ.get('GROUP_ID')
+group_id = os.environ['GROUP_ID']
 
 today = datetime.now()
 today_tuple = (today.month, today.day)
