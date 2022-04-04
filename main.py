@@ -26,7 +26,7 @@ def start_process():
 class TimeSchedule():
     def start_schedule():
         schedule.every().day.at("04:00").do(TimeSchedule.send_congratulations)
-        schedule.every().day.at("16:54").do(TimeSchedule.send_new_podcast)
+        schedule.every().day.at("17:08").do(TimeSchedule.send_new_podcast)
 
         while True:
             schedule.run_pending()
@@ -53,9 +53,9 @@ class TimeSchedule():
                 bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n {podcast_link}')
 
 
-@bot.message_handler(content_types=['image'])
-def reply_genius(message):
-    bot.send_message(message.chat.id, "Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃")
+# @bot.message_handler(content_types=['image'])
+# def reply_genius(message):
+#     bot.send_message(message.chat.id, "Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃")
 
 
 # @bot.message_handler(regexp='Спасибо')
