@@ -12,7 +12,8 @@ from time import mktime
 
 token = os.environ['BOT_API_TOKEN']
 bot = telebot.TeleBot(token)
-group_id = os.environ['GROUP_ID']
+# group_id = os.environ['GROUP_ID']
+group_id = '-770664035'
 
 today = datetime.now()
 today_tuple = (today.month, today.day)
@@ -25,7 +26,7 @@ def start_process():
 class TimeSchedule():
     def start_schedule():
         schedule.every().day.at("04:00").do(TimeSchedule.send_congratulations)
-        schedule.every().day.at("16:30").do(TimeSchedule.send_new_podcast)
+        schedule.every().day.at("04:01").do(TimeSchedule.send_new_podcast)
 
         while True:
             schedule.run_pending()
@@ -46,10 +47,9 @@ class TimeSchedule():
         podcast_link = podcast_url.entries[0]['link']
 
         for post in podcast_url.entries:
-            post_date = datetime.fromtimestamp(mktime(post.published_parsed)).date()
-            # today = datetime.now().date()
-            today = ('2022-03-31')
-            if post_date == today:
+            post_date = datetime.fromtimestamp(mktime(post.published_parsed)).strftime("%Y-%m-%d")
+            today_date = today.strftime("%Y-%m-%d")
+            if today_date in post_date:  
                 bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n \n {podcast_link}')
 
 
