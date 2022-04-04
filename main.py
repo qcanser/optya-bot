@@ -8,15 +8,12 @@ import feedparser
 
 from multiprocessing import *
 from telebot import types
-from fuzzywuzzy import fuzz
 from datetime import datetime
 from time import mktime
 
 
-
 bot = telebot.TeleBot(config.token)
-# group_id = os.environ.get('GROUP_ID')
-group_id = '-770664035'
+group_id = os.environ.get('GROUP_ID')
 
 today = datetime.now()
 today_tuple = (today.month, today.day)
@@ -29,7 +26,7 @@ def start_process():
 class TimeSchedule():
     def start_schedule():
         schedule.every().day.at("13:51").do(TimeSchedule.send_congratulations)
-        schedule.every().day.at("15:29").do(TimeSchedule.send_new_podcast)
+        schedule.every().day.at("16:05").do(TimeSchedule.send_new_podcast)
 
         while True:
             schedule.run_pending()
@@ -54,6 +51,18 @@ class TimeSchedule():
             today_date = ('2022-03-31')
             if today_date in pub_date:
                 bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n {podcast_link}')
+
+
+
+@bot.message_handler(content_types=['image'])
+def reply_genius(message):
+    bot.send_message(message.chat.id, "Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃")
+
+
+@bot.message_handler(regexp='Спасибо')
+def reply_thanks(message):
+    url = 'https://cs5.pikabu.ru/images/big_size_comm/2015-10_2/1444219702158350197.jpg'
+    bot.send_photo(message.chat.id, url)
 
 
 if __name__ == '__main__':
