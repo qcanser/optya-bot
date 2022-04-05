@@ -4,13 +4,14 @@ import telebot
 import pandas
 import feedparser
 
-from telebot import types
+from flask import Flask, request
 from datetime import datetime
-from time import mktime
 
-token = os.environ['BOT_API_TOKEN']
-bot = telebot.TeleBot(token)
+TOKEN = os.environ['BOT_API_TOKEN']
+bot = telebot.TeleBot(TOKEN)
+APP_URL = f'https://technopolis-bot.herokuapp.com/{TOKEN}'
 group_id = os.environ['GROUP_ID']
+server = Flask(__name__)
 
 
 def send_congratulations():
@@ -51,5 +52,20 @@ def reply_genius(message):
 #     video.close()
 
 
+@server.route('/' + TOKEN, methods=['POST'])
+def get_message():
+    json_string = request.get_data().decode('utf-8')
+    update = telebot.types.Update.de_json(json_string)
+    bot.process_new_updates([update])
+    return '!', 200
+
+
+@server.route('/')
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url=APP_URL)
+    return '!', 200
+
+
 if __name__ == '__main__':
-    bot.polling(none_stop=True)
+    server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
