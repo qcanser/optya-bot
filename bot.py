@@ -12,7 +12,8 @@ from time import mktime
 
 token = os.environ['BOT_API_TOKEN']
 bot = telebot.TeleBot(token)
-group_id = os.environ['GROUP_ID']
+# group_id = os.environ['GROUP_ID']
+group_id = -770664035
 
 today = datetime.now()
 today_tuple = (today.month, today.day)
@@ -25,7 +26,7 @@ def start_process():
 class TimeSchedule():
     def start_schedule():
         schedule.every().day.at("04:00").do(TimeSchedule.send_congratulations)
-        schedule.every().day.at("04:01").do(TimeSchedule.send_new_podcast)
+        schedule.every().day.at("06:08").do(TimeSchedule.send_new_podcast)
 
         while True:
             schedule.run_pending()
@@ -65,4 +66,7 @@ def reply_thanks(message):
 
 if __name__ == '__main__':
     start_process()
-    bot.polling(none_stop=True)
+    try:
+        bot.polling(none_stop=True)
+    except:
+        pass
