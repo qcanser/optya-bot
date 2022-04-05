@@ -3,6 +3,7 @@ import os
 import telebot
 import pandas
 import feedparser
+import random
 
 from flask import Flask, request
 from datetime import datetime
@@ -39,19 +40,22 @@ def send_new_podcast():
         print('Нет свежих эфиров.')
             
 
-
-@bot.message_handler(content_types=["sticker", "pinned_message", "photo", "audio", "voice", "video"])
+@bot.message_handler(content_types=["sticker", "pinned_message", "photo", "voice", "audio", "video"])
 def reply_genius(message):
     time.sleep(10)
-    bot.send_message(message.chat.id, "Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃")
+    random_answer = ['Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃', 
+                    'Спасибо судья 👍🔥😊😊😊', 
+                    'Гениально 👍👍👍👍👏👏👏😁😁😁',
+                    'Спаси сохрани 🙏🙏🙏🤦‍♂️🤦‍♂️🤦‍♂️🤣🤣🤣',
+                    'Я в шоке!!!🤦‍♂️🤦‍♂️🤦‍♂️🙏🙏🙏😃😃😃🔥🔥🔥🥰🥰🥰']
+    bot.send_message(message.chat.id, random.choice(random_answer))
+    
 
-
-@bot.message_handler(regexp='Спасибо')
+@bot.message_handler(regexp='Лысый')
 def reply_thanks(message):
     time.sleep(10)
-    thanks_text = 'Спасибо судья 👍🔥😊😊😊'
     video = open('file.mp4', 'rb')
-    bot.send_video(message.chat.id, video, thanks_text) 
+    bot.send_video(message.chat.id, video) 
     video.close()
 
 
