@@ -54,11 +54,13 @@ class TimeSchedule():
 
 @bot.message_handler(content_types=["sticker", "pinned_message", "photo", "audio", "voice", "video"])
 def reply_genius(message):
+    time.sleep(10)
     bot.send_message(message.chat.id, "Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃")
 
 
 @bot.message_handler(regexp='Спасибо')
 def reply_thanks(message):
+    time.sleep(10)
     video = open('file.mp4', 'rb')
     bot.send_video(message.chat.id, video) 
     video.close()
