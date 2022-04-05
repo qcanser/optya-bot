@@ -48,14 +48,14 @@ def reply_genius(message):
                     'Гениально 👍👍👍👍👏👏👏😁😁😁',
                     'Спаси сохрани 🙏🙏🙏🤦‍♂️🤦‍♂️🤦‍♂️🤣🤣🤣',
                     'Я в шоке!!!🤦‍♂️🤦‍♂️🤦‍♂️🙏🙏🙏😃😃😃🔥🔥🔥🥰🥰🥰']
-    bot.send_message(message.chat.id, random.choice(random_answer))
+    bot.replay_to(message, random.choice(random_answer))
     
 
 @bot.message_handler(regexp='Лысый')
 def reply_thanks(message):
     time.sleep(10)
     video = open('file.mp4', 'rb')
-    bot.send_video(message.chat.id, video) 
+    bot.replay_to(message, video) 
     video.close()
 
 
