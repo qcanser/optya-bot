@@ -55,7 +55,7 @@ def reply_genius(message):
 def reply_thanks(message):
     time.sleep(10)
     video = open('file.mp4', 'rb')
-    bot.send_message(message.chat.id, video, reply_to_message_id=message.message_id) 
+    bot.send_video(message.chat.id, video, reply_to_message_id=message.message_id) 
     video.close()
 
 
