@@ -52,5 +52,4 @@ def reply_genius(message):
 
 
 if __name__ == '__main__':
-    start_process()
     bot.polling(none_stop=True)
