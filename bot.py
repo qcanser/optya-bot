@@ -33,11 +33,14 @@ def send_new_podcast():
     today = datetime.now()
     
     for post in podcast_url.entries:
-        post_date = datetime.fromtimestamp(mktime(post.published_parsed)).strftime("%Y-%m-%d")
-        today_date = today.strftime("%Y-%m-%d")
-        if today_date in post_date:  
+        # post_date = datetime.fromtimestamp(mktime(post.published_parsed)).strftime("%Y-%m-%d")
+        # today_date = today.strftime("%Y-%m-%d")
+        # if today_date in post_date:  
+        post_date = datetime.fromtimestamp(mktime(post.published_parsed)).date()
+        today_date = datetime.now().date()
+        if post_date == today_date:
             # bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n \n {podcast_link}')
-            print(podcast_link)
+            print(post_date)
 
 
 @bot.message_handler(content_types=["sticker", "pinned_message", "photo", "audio", "voice", "video"])
