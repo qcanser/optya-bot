@@ -5,7 +5,6 @@ import pandas
 import feedparser
 
 from flask import Flask, request
-from zoneinfo import ZoneInfo
 from datetime import datetime
 from time import mktime
 
@@ -31,8 +30,7 @@ def send_congratulations():
 def send_new_podcast():
     podcast_url = feedparser.parse("https://promodj.com/strogonov-radioshow-technopolis/podcast.xml")
     podcast_link = podcast_url.entries[0]['link']
-    MSC = zoneinfo.ZoneInfo("Europe/Moscow")
-    today = datetime(tzinfo=MSC).now()
+    today = datetime.now()
     
     for post in podcast_url.entries:
         post_date = datetime.fromtimestamp(mktime(post.published_parsed)).strftime("%Y-%m-%d")
