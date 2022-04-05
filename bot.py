@@ -62,7 +62,7 @@ def reply_thanks(message):
     # url = 'https://cs5.pikabu.ru/images/big_size_comm/2015-10_2/1444219702158350197.jpg'
     # bot.send_message(message.chat.id, f'Спасибо судья 👍🔥😊😊😊 \n {url}')
     video = open('file.mp4', 'rb')
-    bot.send_video(message.chat.id, video)
+    bot.send_video(message.chat.id, f'Спасибо судья 👍🔥😊😊😊 \n {video}')
     video.close()
 
 
