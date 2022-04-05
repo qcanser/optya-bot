@@ -24,7 +24,7 @@ def start_process():
 
 class TimeSchedule():
     def start_schedule():
-        schedule.every().day.at("05:15").do(TimeSchedule.send_congratulations)
+        schedule.every().day.at("04:00").do(TimeSchedule.send_congratulations)
         schedule.every().day.at("04:01").do(TimeSchedule.send_new_podcast)
 
         while True:
@@ -65,3 +65,4 @@ def reply_thanks(message):
 
 if __name__ == '__main__':
     start_process()
+    bot.polling(none_stop=True)
