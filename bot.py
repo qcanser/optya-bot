@@ -58,17 +58,14 @@ def reply_genius(message):
     bot.send_message(message.chat.id, "Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃")
 
 
-@bot.message_handler(regexp='Спасибо')
-def reply_thanks(message):
-    time.sleep(10)
-    video = open('file.mp4', 'rb')
-    bot.send_video(message.chat.id, video) 
-    video.close()
+# @bot.message_handler(regexp='Спасибо')
+# def reply_thanks(message):
+#     time.sleep(10)
+#     video = open('file.mp4', 'rb')
+#     bot.send_video(message.chat.id, video) 
+#     video.close()
 
 
 if __name__ == '__main__':
     start_process()
-    try:
-        bot.polling(none_stop=True)
-    except:
-        pass
+    bot.polling(none_stop=True)
