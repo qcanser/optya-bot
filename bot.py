@@ -30,17 +30,14 @@ def send_congratulations():
 def send_new_podcast():
     podcast_url = feedparser.parse("https://promodj.com/strogonov-radioshow-technopolis/podcast.xml")
     podcast_link = podcast_url.entries[0]['link']
-    today = datetime.now()
-    
-    for post in podcast_url.entries:
-        # post_date = datetime.fromtimestamp(mktime(post.published_parsed)).strftime("%Y-%m-%d")
-        # today_date = today.strftime("%Y-%m-%d")
-        # if today_date in post_date:  
-        post_date = datetime.fromtimestamp(mktime(post.published_parsed)).date()
-        today_date = datetime.now().date()
-        if post_date == today_date:
-            # bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n \n {podcast_link}')
-            print(post_date)
+    post_date = datetime.fromtimestamp(mktime(podcast_url.entries[0].published_parsed)).date()
+    today_date = datetime.now().date()
+
+    if today_date == post_date:
+        bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n \n {podcast_link}')
+    else:
+        print('Нет свежих эфиров.')
+            
 
 
 @bot.message_handler(content_types=["sticker", "pinned_message", "photo", "audio", "voice", "video"])
@@ -49,12 +46,13 @@ def reply_genius(message):
     bot.send_message(message.chat.id, "Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃")
 
 
-# @bot.message_handler(regexp='Спасибо')
-# def reply_thanks(message):
-#     time.sleep(10)
-#     video = open('file.mp4', 'rb')
-#     bot.send_video(message.chat.id, video) 
-#     video.close()
+@bot.message_handler(regexp='Спасибо')
+def reply_thanks(message):
+    time.sleep(10)
+    thanks_text = 'Спасибо судья 👍🔥😊😊😊'
+    video = open('file.mp4', 'rb')
+    bot.send_video(message.chat.id, video, thanks_text) 
+    video.close()
 
 
 @server.route('/' + TOKEN, methods=['POST'])
