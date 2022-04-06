@@ -9,7 +9,6 @@ numpy
 pandas
 pyTelegramBotAPI
 PyTelegramBotAPI
-APScheduler
 python-dateutil
 pytz
 requests
@@ -19,3 +18,4 @@ soupsieve
 urllib3
 feedparser
 Flask
+schedule
