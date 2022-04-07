@@ -98,7 +98,7 @@ def start(m, res=False):
     random_audio = [open('brain.ogg', 'rb'),
                     open('shbdr.ogg', 'rb'),
                     open('666.ogg', 'rb')]
-    bot.send_audio(m.chat.id, random.choice(random_audio), reply_to_message_id=message.message_id) 
+    bot.send_audio(m.chat.id, random.choice(random_audio)) 
     audio.close()
 
 
