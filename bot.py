@@ -85,7 +85,7 @@ def reply_genius(message):
     bot.send_message(message.chat.id, random.choice(random_answer), reply_to_message_id=message.message_id)
     
 
-@bot.message_handler(regexp='Лысый')
+@bot.message_handler(regexp='Лысый|Лысого|с лысым|у лысого|лысому')
 def reply_thanks(message):
     time.sleep(10)
     video = open('file.mp4', 'rb')
