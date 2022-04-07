@@ -107,7 +107,11 @@ def handle_text(message):
     s=answer(message.text)
     f.write('u: ' + message.text + '\n' + s +'\n')
     f.close()
-    bot.send_message(message.chat.id, s.capitalize())
+    if s in mas:
+        bot.send_message(message.chat.id, s.capitalize())
+    else:
+        start(res=True)
+
 
 
 @bot.message_handler(regexp='Когда выйдет новый эфир Технополис?')
