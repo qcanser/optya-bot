@@ -100,6 +100,12 @@ def start(m, res=False):
     audio.close()
 
 
+@bot.message_handler(regexp='Артём когда соберёмся?')
+def stop(message):
+    bot.send_message(message.chat.id, 'Ребята у меня с 18 декабря отпуск . Я всё таки Вас соберу !')
+    start(m, res=True)
+
+
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
     time.sleep(10)
@@ -108,12 +114,6 @@ def handle_text(message):
     f.write('u: ' + message.text + '\n' + s +'\n')
     f.close()
     bot.send_message(message.chat.id, s.capitalize())
-
-
-@bot.message_handler(regexp='Артём когда соберёмся?')
-def end(m, res=True):
-    time.sleep(10)
-    bot.send_message(message.chat.id, 'Ребята у меня с 18 декабря отпуск . Я всё таки Вас соберу !')
 
 
 @bot.message_handler(regexp='Когда выйдет новый эфир Технополис?')
