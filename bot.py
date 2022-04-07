@@ -44,6 +44,8 @@ class TimeSchedule():
             birthday_person = birthdays_dict[today_tuple]
             name = birthday_person["name"]
             bot.send_message(group_id, f"С Днём Рождения {name}! 🥳🥳🥳👋👋👋🔈🔈🔈🍺🍺🍺🍻🍻🍻😃😃😃")
+        else:
+            print('Сегодня нет именинников.')
 
 
     def send_new_podcast():
@@ -115,4 +117,5 @@ def webhook():
 
 
 if __name__ == '__main__':
+    start_process()
     server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
