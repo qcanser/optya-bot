@@ -101,9 +101,8 @@ def start(m, res=False):
 
 
 @bot.message_handler(regexp='Артём когда соберёмся?')
-def stop(message):
-    bot.send_message(message.chat.id, 'Ребята у меня с 18 декабря отпуск . Я всё таки Вас соберу !')
-    start(m, res=True)
+def stop(m, res=False):
+    bot.send_message(m.chat.id, 'Ребята у меня с 18 декабря отпуск . Я всё таки Вас соберу !')
 
 
 @bot.message_handler(content_types=["text"])
