@@ -91,7 +91,7 @@ def reply_thanks(message):
     video.close()
 
 
-@bot.message_handler(regexp=['Едем', 'Едем!', 'Поедем?', 'Точно поедем?', 'Едешь?', 'Ты едешь?', 'Поехали?'])
+@bot.message_handler(regexp=['Едем|Едем!|Поедем?|Точно поедем?|Едешь?|Ты едешь?|Поехали?|едем|едем!|поедем?|точно поедем?|едешь?|ты едешь?|поехали?'])
 def reply_go(message):
     time.sleep(10)
     audio = open('audio.ogg', 'rb')
