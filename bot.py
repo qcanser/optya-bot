@@ -95,10 +95,8 @@ def answer(text):
 @bot.message_handler(regexp='Артём как дела?')
 def start(m, res=False):
     time.sleep(10)
-    random_audio = [open('brain.ogg', 'rb'),
-                    open('shbdr.ogg', 'rb'),
-                    open('666.ogg', 'rb')]
-    bot.send_audio(m.chat.id, random.choice(random_audio)) 
+    random_audio = open('audio/' + random.choice(os.listdir('audio')), 'rb')
+    bot.send_audio(m.chat.id, random_audio) 
     audio.close()
 
 
@@ -148,7 +146,7 @@ def reply_thanks(message):
 @bot.message_handler(regexp='Едем|Едем!|Поедем?|Точно поедем?|Едешь?|Ты едешь?|Поехали?|едем|едем!|поедем?|точно поедем?|едешь?|ты едешь?|поехали?')
 def reply_go(message):
     time.sleep(10)
-    audio = open('audio.ogg', 'rb')
+    audio = open('audio/audio.ogg', 'rb')
     bot.send_audio(message.chat.id, audio, reply_to_message_id=message.message_id) 
     audio.close()
 
