@@ -61,62 +61,59 @@ class TimeSchedule():
             print('Нет свежих эфиров.')
             
 
-mas=[]
-if os.path.exists('data/dialog.txt'):
-    f=open('data/dialog.txt', 'r', encoding='UTF-8')
-    for x in f:
-        if(len(x.strip()) > 2):
-            mas.append(x.strip().lower())
-    f.close()
+# mas=[]
+# if os.path.exists('data/dialog.txt'):
+#     f=open('data/dialog.txt', 'r', encoding='UTF-8')
+#     for x in f:
+#         if(len(x.strip()) > 2):
+#             mas.append(x.strip().lower())
+#     f.close()
 
 
-def answer(text):
-    try:
-        text=text.lower().strip()
-        if os.path.exists('data/dialog.txt'):
-            a = 0
-            n = 0
-            nn = 0
-            for q in mas:
-                if('u: ' in q):
-                    aa=(fuzz.token_sort_ratio(q.replace('u: ',''), text))
-                    if(aa > a and aa!= a):
-                        a = aa
-                        nn = n
-                n = n + 1
-            s = mas[nn + 1]
-            return s
-        else:
-            return 'Ошибка'
-    except:
-        return 'Ошибка'
+# def answer(text):
+#     try:
+#         text=text.lower().strip()
+#         if os.path.exists('data/dialog.txt'):
+#             a = 0
+#             n = 0
+#             nn = 0
+#             for q in mas:
+#                 if('u: ' in q):
+#                     aa=(fuzz.token_sort_ratio(q.replace('u: ',''), text))
+#                     if(aa > a and aa!= a):
+#                         a = aa
+#                         nn = n
+#                 n = n + 1
+#             s = mas[nn + 1]
+#             return s
+#         else:
+#             return 'Ошибка'
+#     except:
+#         return 'Ошибка'
 
 
 @bot.message_handler(regexp='Артём как дела?')
-def start(m, res=False):
+def start(message):
     time.sleep(10)
     random_audio = open('audio/' + random.choice(os.listdir('audio')), 'rb')
-    bot.send_audio(m.chat.id, random_audio) 
+    bot.send_audio(message.chat.id, random_audio) 
     audio.close()
 
 
 @bot.message_handler(regexp='Когда соберёмся?')
-def stop(message):
+def event(message):
     time.sleep(10)
     bot.send_message(message.chat.id, 'Ребята у меня с 18 декабря отпуск . Я всё таки Вас соберу !')
 
 
-@bot.message_handler(content_types=["text"])
-def handle_text(message):
-    if text is not mas:
-        break
-    else:
-        time.sleep(10)
-        f=open('data/' + str(message.chat.id) + '_log.txt', 'a', encoding='UTF-8')
-        s=answer(message.text)
-        f.write('u: ' + message.text + '\n' + s +'\n')
-        f.close()
-        bot.send_message(message.chat.id, s.capitalize())
+# @bot.message_handler(content_types=["text"])
+# def handle_text(message):
+#     time.sleep(10)
+#     f=open('data/' + str(message.chat.id) + '_log.txt', 'a', encoding='UTF-8')
+#     s=answer(message.text)
+#     f.write('u: ' + message.text + '\n' + s +'\n')
+#     f.close()
+#     bot.send_message(message.chat.id, s.capitalize())
 
 
 @bot.message_handler(regexp='Когда выйдет новый эфир Технополис?')
