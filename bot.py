@@ -107,11 +107,13 @@ def handle_text(message):
     s=answer(message.text)
     f.write('u: ' + message.text + '\n' + s +'\n')
     f.close()
-    if s in mas:
-        bot.send_message(message.chat.id, s.capitalize())
-    else:
-        start(res=True)
+    bot.send_message(message.chat.id, s.capitalize())
 
+
+@bot.message_handler(regexp='Артём когда соберёмся?')
+def end(m, res=True):
+    time.sleep(10)
+    bot.send_message(message.chat.id, 'Ребята у меня с 18 декабря отпуск . Я всё таки Вас соберу !')
 
 
 @bot.message_handler(regexp='Когда выйдет новый эфир Технополис?')
@@ -128,7 +130,7 @@ def reply_new_podcast(message):
         bot.send_message(message.chat.id, 'Витя ещё не выложил 🤷🏻‍♂️') 
 
 
-@bot.message_handler(content_types=["pinned_message", "photo", "voice", "audio", "video"])
+@bot.message_handler(content_types=["pinned_message", "photo", "voice", "video"])
 def reply_genius(message):
     time.sleep(10)
     random_answer = ['Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃', 
@@ -151,6 +153,14 @@ def reply_thanks(message):
 def reply_go(message):
     time.sleep(10)
     audio = open('audio/audio.ogg', 'rb')
+    bot.send_audio(message.chat.id, audio, reply_to_message_id=message.message_id) 
+    audio.close()
+
+
+@bot.message_handler(content_types=["audio"])
+def reply_audio(message):
+    time.sleep(10)
+    audio = open('audio/podcast.ogg', 'rb')
     bot.send_audio(message.chat.id, audio, reply_to_message_id=message.message_id) 
     audio.close()
 
