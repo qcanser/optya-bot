@@ -58,8 +58,8 @@ class TimeSchedule():
             print('Нет свежих эфиров.')
             
 
-@bot.message_handler(regexp='Когда новый эфир Технополис?')
-def reply_thanks(message):
+@bot.message_handler(regexp='Когда выйдет новый эфир Технополис?')
+def reply_new_podcast(message):
     time.sleep(10)
     podcast_url = feedparser.parse("https://promodj.com/strogonov-radioshow-technopolis/podcast.xml")
     podcast_link = podcast_url.entries[0]['link']
@@ -67,12 +67,12 @@ def reply_thanks(message):
     today_date = datetime.now().date()
 
     if today_date == post_date:
-        bot.send_message(message.chat.id, f'🔥🔥🔥👍👍👍💯💯💯💪💪💪🥩🥩🥩 \n  Вот держи братишка свежий эфир радио-шоу "ТЕХНОПОЛИС" \n \n {podcast_link}')
+        bot.send_message(message.chat.id, f'🔥🔥🔥👍👍👍💯💯💯💪💪💪🥩🥩🥩 \n  Вот держи свежий эфир радио-шоу "ТЕХНОПОЛИС" \n \n {podcast_link}')
     else:
-        bot.send_message(message.chat.id, '🤷 Пока Витя не выложил') 
+        bot.send_message(message.chat.id, 'Витя ещё не выложил 🤷🏻‍♂️') 
 
 
-@bot.message_handler(content_types=["sticker", "pinned_message", "photo", "voice", "audio", "video"])
+@bot.message_handler(content_types=["pinned_message", "photo", "voice", "audio", "video"])
 def reply_genius(message):
     time.sleep(10)
     random_answer = ['Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃', 
@@ -89,6 +89,14 @@ def reply_thanks(message):
     video = open('file.mp4', 'rb')
     bot.send_video(message.chat.id, video, reply_to_message_id=message.message_id) 
     video.close()
+
+
+@bot.message_handler(regexp='Едем')
+def reply_go(message):
+    time.sleep(10)
+    audio = open('audio.ogg', 'rb')
+    bot.send_audio(message.chat.id, audio, reply_to_message_id=message.message_id) 
+    audio.close()
 
 
 @server.route('/' + TOKEN, methods=['POST'])
