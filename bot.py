@@ -102,12 +102,12 @@ def start(m, res=False):
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
-    time.sleep(30)
+    time.sleep(10)
     f=open('data/' + str(message.chat.id) + '_log.txt', 'a', encoding='UTF-8')
     s=answer(message.text)
     f.write('u: ' + message.text + '\n' + s +'\n')
     f.close()
-    bot.send_message(message.chat.id, s)
+    bot.send_message(message.chat.id, s.capitalize())
 
 
 @bot.message_handler(regexp='Когда выйдет новый эфир Технополис?')
