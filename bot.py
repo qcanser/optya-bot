@@ -108,7 +108,7 @@ def stop(message):
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
-    if text == mas:
+    if text is not mas:
         break
     else:
         time.sleep(10)
