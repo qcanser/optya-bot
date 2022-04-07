@@ -11,6 +11,7 @@ from datetime import datetime
 from time import mktime
 from multiprocessing import *
 from telebot import types
+from fuzzywuzzy import fuzz
 
 TOKEN = os.environ['BOT_API_TOKEN']
 bot = telebot.TeleBot(TOKEN)
@@ -59,6 +60,57 @@ class TimeSchedule():
         else:
             print('Нет свежих эфиров.')
             
+
+mas=[]
+if os.path.exists('data/dialog.txt'):
+    f=open('data/dialog.txt', 'r', encoding='UTF-8')
+    for x in f:
+        if(len(x.strip()) > 2):
+            mas.append(x.strip().lower())
+    f.close()
+
+
+def answer(text):
+    try:
+        text=text.lower().strip()
+        if os.path.exists('data/dialog.txt'):
+            a = 0
+            n = 0
+            nn = 0
+            for q in mas:
+                if('u: ' in q):
+                    aa=(fuzz.token_sort_ratio(q.replace('u: ',''), text))
+                    if(aa > a and aa!= a):
+                        a = aa
+                        nn = n
+                n = n + 1
+            s = mas[nn + 1]
+            return s
+        else:
+            return 'Ошибка'
+    except:
+        return 'Ошибка'
+
+
+@bot.message_handler(regexp='Артём как дела?')
+def start(message, res=False):
+    time.sleep(10)
+    random_audio = [open('brain.ogg', 'rb'),
+                    open('shbdr.ogg', 'rb'),
+                    open('666.ogg', 'rb')]
+    bot.send_audio(message.chat.id, random.choice(random_audio), reply_to_message_id=message.message_id) 
+    audio.close()
+
+
+@bot.message_handler(content_types=["text"])
+def handle_text(message):
+    time.sleep(30)
+    f=open('data/' + str(message.chat.id) + '_log.txt', 'a', encoding='UTF-8')
+    s=answer(message.text)
+    f.write('u: ' + message.text + '\n' + s +'\n')
+    f.close()
+    bot.send_message(message.chat.id, s)
+
 
 @bot.message_handler(regexp='Когда выйдет новый эфир Технополис?')
 def reply_new_podcast(message):
