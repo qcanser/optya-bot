@@ -160,7 +160,7 @@ def reply_go(message):
 @bot.message_handler(content_types=["audio"])
 def reply_audio(message):
     time.sleep(10)
-    audio = open('audio/podcast.ogg', 'rb')
+    audio = open('podcast.ogg', 'rb')
     bot.send_audio(message.chat.id, audio, reply_to_message_id=message.message_id) 
     audio.close()
 
