@@ -59,42 +59,10 @@ class TimeSchedule():
             bot.send_message(group_id, f'🔥🔥🔥💯💯💯👍👍👍💪💪💪🙏🙏🙏 \n Свежий эфир радио-шоу "ТЕХНОПОЛИС" \n \n {podcast_link}')
         else:
             print('Нет свежих эфиров.')
-            
-
-# mas=[]
-# if os.path.exists('data/dialog.txt'):
-#     f=open('data/dialog.txt', 'r', encoding='UTF-8')
-#     for x in f:
-#         if(len(x.strip()) > 2):
-#             mas.append(x.strip().lower())
-#     f.close()
-
-
-# def answer(text):
-#     try:
-#         text=text.lower().strip()
-#         if os.path.exists('data/dialog.txt'):
-#             a = 0
-#             n = 0
-#             nn = 0
-#             for q in mas:
-#                 if('u: ' in q):
-#                     aa=(fuzz.token_sort_ratio(q.replace('u: ',''), text))
-#                     if(aa > a and aa!= a):
-#                         a = aa
-#                         nn = n
-#                 n = n + 1
-#             s = mas[nn + 1]
-#             return s
-#         else:
-#             return 'Ошибка'
-#     except:
-#         return 'Ошибка'
 
 
 @bot.message_handler(regexp='Артём как дела?')
 def start(message):
-    time.sleep(10)
     random_audio = open('audio/' + random.choice(os.listdir('audio')), 'rb')
     bot.send_audio(message.chat.id, random_audio) 
     audio.close()
@@ -102,7 +70,6 @@ def start(message):
 
 @bot.message_handler(regexp='Когда соберёмся?')
 def event(message):
-    time.sleep(10)
     random_answer_event = ['По каналу Кино ТВ Криминальное чтиво идёт 😎👌',
     'Ребята у меня с 18 декабря отпуск . Я всё таки Вас соберу !', 
     'По тв 3 Шакал начался с Брюсом Уильямсом',
@@ -126,19 +93,8 @@ def event(message):
     bot.send_message(message.chat.id, random.choice(random_answer_event))
 
 
-# @bot.message_handler(content_types=["text"])
-# def handle_text(message):
-#     time.sleep(10)
-#     f=open('data/' + str(message.chat.id) + '_log.txt', 'a', encoding='UTF-8')
-#     s=answer(message.text)
-#     f.write('u: ' + message.text + '\n' + s +'\n')
-#     f.close()
-#     bot.send_message(message.chat.id, s.capitalize())
-
-
 @bot.message_handler(regexp='Когда выйдет новый эфир Технополис?')
 def reply_new_podcast(message):
-    time.sleep(10)
     podcast_url = feedparser.parse("https://promodj.com/strogonov-radioshow-technopolis/podcast.xml")
     podcast_link = podcast_url.entries[0]['link']
     post_date = datetime.fromtimestamp(mktime(podcast_url.entries[0].published_parsed)).date()
@@ -152,8 +108,7 @@ def reply_new_podcast(message):
 
 @bot.message_handler(content_types=["pinned_message", "photo", "voice", "video"])
 def reply_genius(message):
-    time.sleep(10)
-    random_answer = ['Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃', 
+    random_answer = ['Гениально 👍👍👍🔥🔥🔥🥰🥰🥰😃😃😃',
                     'Спасибо судья 👍🔥😊😊😊', 
                     'Гениально 👍👍👍👍👏👏👏😁😁😁',
                     'Спаси сохрани 🙏🙏🙏🤦‍♂️🤦‍♂️🤦‍♂️🤣🤣🤣',
@@ -168,7 +123,6 @@ def reply_genius(message):
 
 @bot.message_handler(regexp='Лысый|Лысого|с лысым|у лысого|лысому')
 def reply_thanks(message):
-    time.sleep(10)
     video = open('file.mp4', 'rb')
     bot.send_video(message.chat.id, video, reply_to_message_id=message.message_id) 
     video.close()
@@ -176,7 +130,6 @@ def reply_thanks(message):
 
 @bot.message_handler(regexp='Едем|Едем!|Поедем?|Точно поедем?|Едешь?|Ты едешь?|Поехали?|едем|едем!|поедем?|точно поедем?|едешь?|ты едешь?|поехали?')
 def reply_go(message):
-    time.sleep(10)
     audio = open('audio/audio.ogg', 'rb')
     bot.send_audio(message.chat.id, audio, reply_to_message_id=message.message_id) 
     audio.close()
@@ -184,7 +137,6 @@ def reply_go(message):
 
 @bot.message_handler(content_types=["audio"])
 def reply_audio(message):
-    time.sleep(10)
     audio = open('podcast.ogg', 'rb')
     bot.send_audio(message.chat.id, audio, reply_to_message_id=message.message_id) 
     audio.close()
