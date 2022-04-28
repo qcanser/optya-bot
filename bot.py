@@ -64,7 +64,6 @@ class TimeSchedule():
 def start(message):
     random_audio = open('audio/' + random.choice(os.listdir('audio')), 'rb')
     bot.send_audio(message.chat.id, random_audio) 
-    audio.close()
 
 
 @bot.message_handler(regexp='Когда соберёмся?')
@@ -133,21 +132,19 @@ def reply_genius(message):
 def reply_thanks(message):
     video = open('file.mp4', 'rb')
     bot.send_video(message.chat.id, video, reply_to_message_id=message.message_id) 
-    video.close()
 
 
-@bot.message_handler(regexp='Едем|Едем!|Поедем?|Точно поедем?|Едешь?|Ты едешь?|Поехали?|едем|едем!|поедем?|точно поедем?|едешь?|ты едешь?|поехали?')
+@bot.message_handler(regexp='Едем|Едем!|Поедем?|Точно поедем?|Едешь?|Ты едешь?|Поехали?|едем|едем!|поедем?|точно поедем?'
+                            '|едешь?|ты едешь?|поехали?')
 def reply_go(message):
     audio = open('audio/audio.ogg', 'rb')
     bot.send_audio(message.chat.id, audio, reply_to_message_id=message.message_id) 
-    audio.close()
 
 
 @bot.message_handler(content_types=["audio"])
 def reply_audio(message):
     audio = open('podcast.ogg', 'rb')
     bot.send_audio(message.chat.id, audio, reply_to_message_id=message.message_id) 
-    audio.close()
 
 
 @server.route('/' + TOKEN, methods=['POST'])
