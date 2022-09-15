@@ -1,0 +1,196 @@
+2022-09-05 08:58:51,698 (__init__.py:986 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: replied message not found"
+2022-09-05 08:58:51,698 (__init__.py:988 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 977, in __threaded_polling
+    self.worker_pool.raise_exceptions()
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 154, in raise_exceptions
+    raise self.exception_info
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 98, in run
+    task(*args, **kwargs)
+  File "/home/aaabbbcloud/technopolis-bot/bot.py", line 173, in superjoke
+    bot.send_message(message.chat.id, random.choice(random_answer), reply_to_message_id=message.message_id)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 1451, in send_message
+    apihelper.send_message(
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 276, in send_message
+    return _make_request(token, method_url, params=payload, method='post')
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 161, in _make_request
+    json_result = _check_result(method_name, result)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 188, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: replied message not found
+"
+2022-09-05 15:13:43,458 (__init__.py:986 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: replied message not found"
+2022-09-05 15:13:43,461 (__init__.py:988 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 977, in __threaded_polling
+    self.worker_pool.raise_exceptions()
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 154, in raise_exceptions
+    raise self.exception_info
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 98, in run
+    task(*args, **kwargs)
+  File "/home/aaabbbcloud/technopolis-bot/bot.py", line 109, in reply_genius
+    bot.send_message(message.chat.id, random.choice(random_answer), reply_to_message_id=message.message_id)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 1451, in send_message
+    apihelper.send_message(
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 276, in send_message
+    return _make_request(token, method_url, params=payload, method='post')
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 161, in _make_request
+    json_result = _check_result(method_name, result)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 188, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: replied message not found
+"
+2022-09-05 15:35:07,064 (__init__.py:986 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running"
+2022-09-05 15:35:07,065 (__init__.py:988 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 976, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 116, in raise_exceptions
+    raise self.exception_info
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 98, in run
+    task(*args, **kwargs)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 601, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 575, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates, long_polling_timeout)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 333, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 161, in _make_request
+    json_result = _check_result(method_name, result)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 188, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+"
+Traceback (most recent call last):
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.9/http/client.py", line 1347, in getresponse
+    response.begin()
+  File "/usr/lib/python3.9/http/client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.9/http/client.py", line 268, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/requests/adapters.py", line 489, in send
+    pool=conn,
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 451, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 340, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=25)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/aaabbbcloud/technopolis-bot/bot.py", line 182, in <module>
+    bot.polling()
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 946, in polling
+    self.__threaded_polling(non_stop=non_stop, interval=interval, timeout=timeout, long_polling_timeout=long_polling_timeout,
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 1021, in __threaded_polling
+    raise e
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 976, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 116, in raise_exceptions
+    raise self.exception_info
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 98, in run
+    task(*args, **kwargs)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 601, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), 
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 575, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates, long_polling_timeout)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 333, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 155, in _make_request
+    result = _get_req_session().request(
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/requests/sessions.py", line 587, in request
+    """
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/requests/sessions.py", line 701, in send
+    env_proxies = get_environ_proxies(url, no_proxy=no_proxy)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/requests/adapters.py", line 578, in send
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=25)
+2022-09-06 16:17:19,719 (__init__.py:986 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: replied message not found"
+2022-09-06 16:17:19,720 (__init__.py:988 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 977, in __threaded_polling
+    self.worker_pool.raise_exceptions()
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 154, in raise_exceptions
+    raise self.exception_info
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 98, in run
+    task(*args, **kwargs)
+  File "/home/aaabbbcloud/technopolis-bot/bot.py", line 109, in reply_genius
+    bot.send_message(message.chat.id, random.choice(random_answer), reply_to_message_id=message.message_id)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 1451, in send_message
+    apihelper.send_message(
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 276, in send_message
+    return _make_request(token, method_url, params=payload, method='post')
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 161, in _make_request
+    json_result = _check_result(method_name, result)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 188, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: replied message not found
+"
+2022-09-07 12:15:34,243 (__init__.py:986 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 429. Description: Too Many Requests: retry after 39"
+2022-09-07 12:15:34,244 (__init__.py:988 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 977, in __threaded_polling
+    self.worker_pool.raise_exceptions()
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 154, in raise_exceptions
+    raise self.exception_info
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 98, in run
+    task(*args, **kwargs)
+  File "/home/aaabbbcloud/technopolis-bot/bot.py", line 162, in greet
+    bot.reply_to(message, result)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 4074, in reply_to
+    return self.send_message(message.chat.id, text, reply_to_message_id=message.message_id, **kwargs)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 1451, in send_message
+    apihelper.send_message(
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 276, in send_message
+    return _make_request(token, method_url, params=payload, method='post')
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 161, in _make_request
+    json_result = _check_result(method_name, result)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 188, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 429. Description: Too Many Requests: retry after 39
+"
+2022-09-07 12:16:16,269 (__init__.py:986 MainThread) ERROR - TeleBot: "Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running"
+2022-09-07 12:16:16,270 (__init__.py:988 MainThread) ERROR - TeleBot: "Exception traceback:
+Traceback (most recent call last):
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 976, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 116, in raise_exceptions
+    raise self.exception_info
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/util.py", line 98, in run
+    task(*args, **kwargs)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 601, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1),
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/__init__.py", line 575, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates, long_polling_timeout)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 333, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 161, in _make_request
+    json_result = _check_result(method_name, result)
+  File "/home/aaabbbcloud/.local/lib/python3.9/site-packages/telebot/apihelper.py", line 188, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 409. Description: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+"
