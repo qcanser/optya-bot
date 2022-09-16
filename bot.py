@@ -155,12 +155,12 @@ def reply_areugay(message):
                     ]
     bot.send_message(message.chat.id, random.choice(random_answer), reply_to_message_id=message.message_id)
 
-@bot.message_handler(regexp='ахах')
+'''@bot.message_handler(regexp='ахах')
 def greet(message):
     text = requests.get("https://insult.mattbas.org/api/insult").text
     result = translator.translate(text)
     bot.reply_to(message, result)
-
+'''
 @bot.message_handler(regexp='Оптя я тебя люблю')
 def iloveyou(message):
     random_answer = ['Я тоже тебя люблю',
